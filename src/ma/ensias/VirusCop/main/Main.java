@@ -1,4 +1,4 @@
-package ma.ensias.main;
+package ma.ensias.VirusCop.main;
 
 
 
@@ -11,9 +11,9 @@ import org.graphstream.graph.implementations.SingleGraph;
 import jade.wrapper.AgentController;
 import jade.wrapper.ContainerController;
 import jade.wrapper.StaleProxyException;
-import ma.ensias.agents.Intrus;
-import ma.ensias.agents.PolicierStationnaire;
-import ma.ensias.util.Plateforme;
+import ma.ensias.VirusCop.agents.Virus;
+import ma.ensias.VirusCop.agents.FixCop;
+import ma.ensias.VirusCop.util.Plateforme;
 
 public class Main {
 	
@@ -87,10 +87,10 @@ public class Main {
 		itinerary.add("stationContainer");
 		
 		// AgentController : to create an agent named "StationPolice"
-		AgentController acStation = rootContainer.createNewAgent("StationPolice", PolicierStationnaire.class.getName(), new Object []{itinerary, 3000});
+		AgentController acStation = rootContainer.createNewAgent("StationPolice", FixCop.class.getName(), new Object []{itinerary, 3000});
 		acStation.start();
-		// AgentController : to create an intruder agent named "Intrus"
-		AgentController acIntrus = containers.get(3).createNewAgent("Intrus", Intrus.class.getName(), new Object []{containersNames, 3000});
+		// AgentController : to create an intruder agent named "Virus"
+		AgentController acIntrus = containers.get(3).createNewAgent("Virus", Virus.class.getName(), new Object []{containersNames, 3000});
 		acIntrus.start();
 	}
 	public static void main(String[] args) throws StaleProxyException {new Main();}

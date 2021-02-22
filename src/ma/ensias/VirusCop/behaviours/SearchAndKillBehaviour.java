@@ -1,4 +1,4 @@
-package ma.ensias.behaviours;
+package ma.ensias.VirusCop.behaviours;
 
 import jade.content.onto.basic.Action;
 import jade.content.onto.basic.Result;
@@ -13,7 +13,7 @@ import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.wrapper.AgentController;
 import jade.wrapper.ControllerException;
-import ma.ensias.util.utils;
+import ma.ensias.VirusCop.util.utils;
 
 public class SearchAndKillBehaviour extends CyclicBehaviour {
 
@@ -78,8 +78,8 @@ public class SearchAndKillBehaviour extends CyclicBehaviour {
 							  AID ae = (AID) listOfAgents.get(i);
 						  	// IF THE Intrus AGENT IS FOUND
 							  try {
-								  if(ae.getLocalName().equals("Intrus")) {
-									  AgentController target = getAgent().getContainerController().getAgent("Intrus");
+								  if(ae.getLocalName().equals("Virus")) {
+									  AgentController target = getAgent().getContainerController().getAgent("Virus");
 									  // KILL HERE.
 									  System.out.println(target.getName() + " FOUND  &  KILLED. by " + this.getAgent().getName());
 									  target.kill();  

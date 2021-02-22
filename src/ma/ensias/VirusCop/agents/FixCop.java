@@ -1,4 +1,4 @@
-package ma.ensias.agents;
+package ma.ensias.VirusCop.agents;
 
 import java.util.List;
 
@@ -18,18 +18,18 @@ import jade.lang.acl.MessageTemplate;
 import jade.wrapper.AgentController;
 import jade.wrapper.ControllerException;
 import jade.wrapper.StaleProxyException;
-import ma.ensias.behaviours.RespawnPoliceBehaviour;
-import ma.ensias.behaviours.StationScanRootBehaviour;
-import ma.ensias.main.Main;
+import ma.ensias.VirusCop.behaviours.RespawnCopBehaviour;
+import ma.ensias.VirusCop.behaviours.StationScanRootBehaviour;
+import ma.ensias.VirusCop.main.Main;
 
-public class PolicierStationnaire extends Agent {
+public class FixCop extends Agent {
 	
 
 	protected void setup() {
 		// DEFINE ONTOLOGY & FIPA CODEC NORM.
 		getContentManager().registerOntology(JADEManagementOntology.getInstance());
         getContentManager().registerLanguage(new SLCodec(), FIPANames.ContentLanguage.FIPA_SL0);
-		System.out.println("Agent Police Stationnaire cree : "+getLocalName());
+		System.out.println("Agent FixCop cree : "+getLocalName());
 		Object[] args = getArguments();
 		List<String> itinerary = (List<String>) args[0];
 		int period = (int) args[1];
@@ -39,7 +39,7 @@ public class PolicierStationnaire extends Agent {
         addBehaviour(new StationScanRootBehaviour(this));
 
 	// RESPAWN ANOTHER POLICIER MOBILE AFTER EACH POLICIER MOBILE's LIFETIME DURATION ELAPSES.
-        addBehaviour(new RespawnPoliceBehaviour(this, period, itinerary));
+        addBehaviour(new RespawnCopBehaviour(this, period, itinerary));
 
 	}
 	

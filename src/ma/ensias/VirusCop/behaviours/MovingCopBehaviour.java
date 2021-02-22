@@ -1,4 +1,4 @@
-package ma.ensias.behaviours;
+package ma.ensias.VirusCop.behaviours;
 
 import java.util.List;
 
@@ -6,14 +6,14 @@ import jade.core.Agent;
 import jade.core.ContainerID;
 import jade.core.behaviours.TickerBehaviour;
 
-public class MovingPoliceBehaviour extends TickerBehaviour {
+public class MovingCopBehaviour extends TickerBehaviour {
 
 	
 	protected List<String> itinerary;
 	protected int nodeStep = 0; // Starting with stationContainer (racine).;
 	private int period;
 	
-	public MovingPoliceBehaviour(Agent a, List<String> itinerary, int period) {
+	public MovingCopBehaviour(Agent a, List<String> itinerary, int period) {
 		super(a, period);
 		this.itinerary = itinerary;
 	}

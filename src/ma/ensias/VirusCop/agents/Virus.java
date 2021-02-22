@@ -1,16 +1,16 @@
-package ma.ensias.agents;
+package ma.ensias.VirusCop.agents;
 
 import java.util.List;
 import java.util.Random;
 
-import ma.ensias.behaviours.IntrusMoveRandomBehaviour;
-import ma.ensias.util.utils;
+import ma.ensias.VirusCop.behaviours.VirusMoveRandomBehaviour;
+import ma.ensias.VirusCop.util.utils;
 import jade.core.Agent;
 import jade.core.ContainerID;
 import jade.core.behaviours.TickerBehaviour;
 import jade.wrapper.ControllerException;
 
-public class Intrus extends Agent {
+public class Virus extends Agent {
 	
 	protected List<String> containersNames;
 	
@@ -22,13 +22,13 @@ public class Intrus extends Agent {
 		int period = (int) args[1];
 		
 		// INTRUS AGENT MOVING RANDOMLY THROUGH ALL NODES.
-        addBehaviour(new IntrusMoveRandomBehaviour(this, period, containersNames));
+        addBehaviour(new VirusMoveRandomBehaviour(this, period, containersNames));
         
         
         
 	}
 	
-	//à la terminaison de l’agent
+	//la terminaison de l'agent
 	protected void takeDown() {
         System.out.println("Agent detruit : "+getLocalName());
     }

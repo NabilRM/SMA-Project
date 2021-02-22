@@ -1,4 +1,4 @@
-package ma.ensias.agents;
+package ma.ensias.VirusCop.agents;
 
 import java.util.List;
 
@@ -17,16 +17,16 @@ import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.wrapper.AgentController;
 import jade.wrapper.ControllerException;
-import ma.ensias.behaviours.MovingPoliceBehaviour;
-import ma.ensias.behaviours.SearchAndKillBehaviour;
-import ma.ensias.util.utils;
+import ma.ensias.VirusCop.behaviours.MovingCopBehaviour;
+import ma.ensias.VirusCop.behaviours.SearchAndKillBehaviour;
+import ma.ensias.VirusCop.util.utils;
 
 
-public class PolicierMobile extends Agent {
+public class MobileCop extends Agent {
 
 	
 	protected List<String> itinerary;
-	protected int nodeStep = 0; // Starting with stationContainer (racine).;
+	protected int nodeStep = 0; // Starting with stationContainer;
 	private int period;
 	protected void setup() {
 		// DEFINE ONTOLOGY & FIPA CODEC NORM.
@@ -40,18 +40,18 @@ public class PolicierMobile extends Agent {
 		period = (int) args[1];
 		
 
-		System.out.println("Agent Policier Mobile cree : " + getLocalName());
-		// MOBILE POLICE AGENT IS MOVING THROUGH ITINERARY, SEARCHING FOR THE INTRUDER. ENDING ITS ITINERARY WITH ROOT.
-        addBehaviour(new MovingPoliceBehaviour(this, itinerary, period));
+		System.out.println("Agent MobileCop cree : " + getLocalName());
+		// MOBILE COP AGENT IS MOVING THROUGH ITINERARY, SEARCHING FOR THE INTRUDER. ENDING ITS ITINERARY WITH ROOT.
+        addBehaviour(new MovingCopBehaviour(this, itinerary, period));
         
       // CYCLICBEHAVIOUR SCAN TO SEARCH THE INTRUDER AGENT, AND KILL IT IF EXISTS.
         addBehaviour(new SearchAndKillBehaviour(this));
         
 	}
 	
-	//‡ la terminaison de líagent
+	//la terminaison de l'agent
 	protected void takeDown() {
-        System.out.println("Agent Policer Mobile a fait le tour est detruit : "+getLocalName());
+        System.out.println("Agent MobileCop a fait le tour est detruit : "+getLocalName());
     }
 	
 	
@@ -59,12 +59,12 @@ public class PolicierMobile extends Agent {
 		
 	}
 	
-    //au niveau du container díarrivÈe
+    //au niveau du container d'arriv√©e
 	protected void afterMove() {
         try {
             getContentManager().registerOntology(JADEManagementOntology.getInstance());
             getContentManager().registerLanguage(new SLCodec(), FIPANames.ContentLanguage.FIPA_SL0);
-			System.out.println("Agent ("+getLocalName()+") arrive ‡ : "+getContainerController().getContainerName());
+			System.out.println("Agent ("+getLocalName()+") arriv√©e : "+getContainerController().getContainerName());
 		} catch (ControllerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

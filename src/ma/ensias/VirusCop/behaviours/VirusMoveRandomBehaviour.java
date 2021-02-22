@@ -1,4 +1,4 @@
-package ma.ensias.behaviours;
+package ma.ensias.VirusCop.behaviours;
 
 import java.util.List;
 import java.util.Random;
@@ -6,12 +6,12 @@ import java.util.Random;
 import jade.core.Agent;
 import jade.core.ContainerID;
 import jade.core.behaviours.TickerBehaviour;
-import ma.ensias.agents.Intrus;
+import ma.ensias.VirusCop.agents.Virus;
 
-public class IntrusMoveRandomBehaviour extends TickerBehaviour {
+public class VirusMoveRandomBehaviour extends TickerBehaviour {
 	private List<String> containersNames;
 	
-	public IntrusMoveRandomBehaviour(Agent a, long period, List<String> containersNames) {
+	public VirusMoveRandomBehaviour(Agent a, long period, List<String> containersNames) {
 		super(a, period);
 		this.containersNames = containersNames;
 	}

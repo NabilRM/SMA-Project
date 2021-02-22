@@ -1,4 +1,4 @@
-package ma.ensias.util;
+package ma.ensias.VirusCop.util;
 import jade.core.ProfileImpl;
 import jade.util.ExtendedProperties;
 import jade.util.leap.Properties;
@@ -12,15 +12,15 @@ public class Plateforme{
 	public Plateforme(boolean isMain, String name) {
 		if(isMain) {
 	        Runtime rt = Runtime.instance();
-	        Properties p = new ExtendedProperties() ;        //fixer quelques propriétés
+	        Properties p = new ExtendedProperties() ;        //fixer quelques propriï¿½tï¿½s
 	        p.setProperty("gui","true") ;
 	        ProfileImpl profile = new ProfileImpl(p);
-	        mainContainer = rt.createMainContainer(profile); //créer le main-container
+	        mainContainer = rt.createMainContainer(profile); //crï¿½er le main-container
 		}else {
 	        Runtime rt = Runtime.instance() ;
 	        ProfileImpl profile = new ProfileImpl(false);
 
-	        //Le main container associé est déjà démarré sur localhost
+	        //Le main container associï¿½ est dï¿½jï¿½ dï¿½marrï¿½ sur localhost
 	        profile.setParameter(ProfileImpl.MAIN_HOST, "localhost");
 	        profile.setParameter(ProfileImpl.CONTAINER_NAME, name);
 	        aContainer = rt.createAgentContainer(profile);

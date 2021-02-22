@@ -1,6 +1,6 @@
-package ma.ensias.util;
+package ma.ensias.VirusCop.util;
 
-import ma.ensias.main.Main;
+import ma.ensias.VirusCop.main.Main;
 
 public class utils {
 
